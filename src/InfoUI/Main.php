@@ -19,12 +19,12 @@ use pocketmine\command\ConsoleCommandSender;
 
 class Main extends PluginBase implements Listener {
 	
-	public function onEnable(){
-        $this->getLogger()->info(C::GREEN . "InfoUI by SigitGamers Aktif!");
+   public function onEnable(){
+       $this->getLogger()->info(C::GREEN . "InfoUI by SigitGamers Aktif!");
        
-        @mkdir($this->getDataFolder());
-        $this->saveDefaultConfig();
-        $this->getResource("config.yml");
+       @mkdir($this->getDataFolder());
+       $this->saveDefaultConfig();
+       $this->getResource("config.yml");
    }
    
    public function onLoad(){
@@ -59,24 +59,45 @@ class Main extends PluginBase implements Listener {
                break;
                case 1:
                    $this->getServer()->dispatchCommand($player, "rank");
-               break
+               break;
                case 2:
                    $this->getServer()->dispatchCommand($player, "sui");
-               break
+               break;
                case 3:
-                   $this->getServer()->dispatchCommand($player, "feature");
-               break
+                   $this->Feature($sender);
+               break;
                case 4:
                    $sender->addTitle("§l§aThank You After See!\n §eInfo in My Server..");
                break;
                
                }
            });
-           $form->setTitle("§l§d•═•⊰❉⊱•═•⊰❉⊱ §bFeatu§9reUI §d⊰❉⊱•═•⊰❉⊱•═•");
-           $form->addButton(" §l§eMinigames\n§dTap to See",0,"textures/ui/ps-x");
-           $form->addButton(" §l§bAcid Island\n§dTap to See",0,"textures/ui/lock");
-           $form->addButton(" §l§aSkyblock\n§dTap to See",0,"textures/ui/mashup_world");
-           $form->addButton(" §l§6Survival\n§dTap to See",0,"textures/ui/lock");
+           $form->setTitle("§l§d•§bInfo§9UI§d•");
+           $form->addButton(" §l§cRules\n§dTap to See",0,"textures/items/book");
+           $form->addButton(" §l§bRank\n§dTap to See",0,"textures/items/emerald");
+           $form->addButton(" §l§aStaffList\n§dTap to See",0,"textures/ui/mcoperator");
+           $form->addButton(" §l§eFeature\n§dTap to See",0,"textures/items/feather");
+           $form->addButton(" §l§cEXIT\n§rTap to Exit",0,"textures/ui/cancel");
+           $form->sendToPlayer($sender);
+           return $form;
+   }
+
+   public function Feature($sender){
+       $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+       $form = $api->createSimpleForm(function (Player $sender, int $data = null) {
+           $result = $data;
+           if($result === null){
+               return true;
+           }             
+           switch($result){
+               case 0: 
+                   $this->openInfoUI($sender);
+               break;
+               
+               }
+           });
+           $form->setTitle("§l§d•§2Feature§d•");
+           $form->setContent($this->getConfig()->get("feature-info");
            $form->addButton(" §l§cEXIT\n§rTap to Exit",0,"textures/ui/cancel");
            $form->sendToPlayer($sender);
            return $form;
