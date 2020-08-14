@@ -1,0 +1,10 @@
+---
+#Settings InfoUI
+
+#Gunakan"§" atau "&" untuk mewarnai Text
+#Gunakan "\n" untuk lanjut Line
+
+#Form InfoUI Info
+feature-info: "Your Server Feature"
+#
+...
