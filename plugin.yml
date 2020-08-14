@@ -1,0 +1,12 @@
+name: InfoUI-master
+author: SigitGamersYTR
+version: 1.0.0
+api: [3.0.0, 4.0.0]
+main: InfoUI\Main
+
+commands:
+  infoui:
+     usage: /infoui
+     aliases: [ifui]
+     description: "§o§eSee Info in Your Server"
+     
