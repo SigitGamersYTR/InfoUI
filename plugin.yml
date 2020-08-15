@@ -3,6 +3,7 @@ author: SigitGamersYTR
 version: 1.0.0
 api: [3.0.0, 4.0.0]
 main: InfoUI\Main
+depends: [RulesUI, RankListUI, StaffListUI-master]
 
 commands:
   infoui:
